@@ -8,7 +8,7 @@ function Cart() {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/cart", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/cart`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCartItems(res.data);
@@ -22,7 +22,7 @@ function Cart() {
   const updateQuantity = async (cartId, newQuantity) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/cart/${cartId}`,
+        `${process.env.REACT_APP_API_URL}/api/cart/${cartId}`,
         { quantity: newQuantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -44,7 +44,7 @@ function Cart() {
   const placeOrder = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/orders",
+        `${process.env.REACT_APP_API_URL}/api/orders`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

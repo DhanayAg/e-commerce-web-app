@@ -10,7 +10,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         email,
         password,
       });
@@ -20,8 +20,9 @@ export default function Login() {
 
       alert("Login successful!");
       navigate("/"); 
-    } catch (err) {
-      alert("Login failed: " + err.response?.data?.message);
+    } catch (error) {
+        console.error("Login Error:", error.response?.data || error.message);
+        alert(`Login failed: ${error.response?.data?.message || error.message}`);
     }
   };
 

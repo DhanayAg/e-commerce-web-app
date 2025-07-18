@@ -13,7 +13,16 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+import cors from "cors";
+
+app.use(
+  cors({
+    origin: "*", // allow all for now
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
 
 pool.connect()

@@ -18,7 +18,7 @@ function AdminPanel() {
   // Fetch Products
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/products", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/products`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(res.data);
@@ -30,7 +30,7 @@ function AdminPanel() {
   // Fetch Categories
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/categories", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/categories`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCategories(res.data);
@@ -49,13 +49,13 @@ function AdminPanel() {
     try {
       if (editingProduct) {
         await axios.put(
-          `http://localhost:5000/api/admin/products/${editingProduct.id}`,
+          `${process.env.REACT_APP_API_URL}/api/admin/products/${editingProduct.id}`,
           form,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         alert("✅ Product updated successfully!");
       } else {
-        await axios.post("http://localhost:5000/api/admin/products", form, {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/products`, form, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("✅ Product added successfully!");
@@ -79,7 +79,7 @@ function AdminPanel() {
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/admin/products/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("✅ Product soft deleted (inactive)!");
@@ -92,7 +92,7 @@ function AdminPanel() {
   const toggleStatus = async (id, is_active) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/admin/products/${id}/status`,
+        `${process.env.REACT_APP_API_URL}/api/admin/products/${id}/status`,
         { is_active },
         { headers: { Authorization: `Bearer ${token}` } }
       );

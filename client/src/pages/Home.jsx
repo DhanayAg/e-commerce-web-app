@@ -6,7 +6,7 @@ export default function Home() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products`);
       setProducts(res.data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -16,7 +16,7 @@ export default function Home() {
   const addToCart = async (productId) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/cart",
+        `${process.env.REACT_APP_API_URL}/api/cart`,
         { product_id: productId, quantity: 1 },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
