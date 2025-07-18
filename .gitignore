@@ -1,0 +1,15 @@
+# Node.js & React common ignores
+node_modules
+.env
+.DS_Store
+
+# React build files
+client/build
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+dist
