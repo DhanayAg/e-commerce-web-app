@@ -38,44 +38,34 @@ Users can browse products, add them to the cart, place orders, and admins can ma
 ## ⚡ Installation & Setup
 
 1. **Clone the repository**
-   ```bash
-        git clone https://github.com/DhanayAg/e-commerce-web-app.git
-        cd e-commerce-web-app
+    git clone https://github.com/DhanayAg/e-commerce-web-app.git
+    cd e-commerce-web-app
 
 2. **Backend**
-
-    ```bash
-        cd server
-        npm install
+    cd server
+    npm install
 
 3. **Frontend**
-
-    ```bash
-        cd ../client
-        npm install
+    cd ../client
+    npm install
 
 4. **Set up environment variables**
-    Create a .env file in the server folder:
-
-    ```env
-        DATABASE_URL=your_postgresql_connection_string
-        JWT_SECRET=your_jwt_secret
+Create a .env file in the server folder:
+    DATABASE_URL=your_postgresql_connection_string
+    JWT_SECRET=your_jwt_secret
 
 5. **Run the app locally**
 
-    Backend (from server folder)
-        ```bash
-        npm run dev
+Backend (from server folder)
+    npm run dev
 
-    Frontend (from client folder)
-        ```bash
-        npm start
+Frontend (from client folder)
+    npm start
 
 6. **Visit in browser**
 
-    Frontend: http://localhost:3000
-
-    Backend API: http://localhost:5000
+Frontend: http://localhost:3000
+Backend API: http://localhost:5000
 
 
 **Next Steps (Optional Enhancements)**
