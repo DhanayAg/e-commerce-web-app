@@ -16,13 +16,25 @@ const pool = new Pool({
 export default pool;
 */
 
-import pg from "pg";
-const pool = new pg.Pool({
+import pkg from "pg";
+import dotenv from "dotenv";
+
+dotenv.config();
+const { Pool } = pkg;
+
+const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false, // Required for Neon.tech & Render
+  },
 });
+
+pool
+  .connect()
+  .then(() => console.log("✅ PostgreSQL Connected (Neon.tech)"))
+  .catch((err) => console.error("❌ DB Connection Error:", err));
+
 export default pool;
+
 
 
